@@ -1,0 +1,76 @@
+Do/*En una frutera se venden peras (que cuesta $450 la unidad), manzanas (que
+tiene un valor de $560 la unidad), ciruelas (que vale $30 la unidad), bananos
+(que cuesta $80 la unidad) y piñas (que vale $1000 la unidad). Un cliente llega
+a la frutera a comprar un número determinado de unidades de una fruta
+específica; si se conoce la fruta que va a comprar y cuantas unidades de esa
+fruta va a comprar, determine cuánto debe pagar el cliente; si la compra
+sobrepasa los $20.000 debe hacer un descuento del 10%.
+El programa debe solicitar por consola la cantidad por cada fruta y como
+resultado indicar el valor de la compra.*/
+using System;
+
+namespace Fruteria
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Precios de cada fruta
+            const int precioPera = 450;
+            const int precioManzana = 560;
+            const int precioCiruela = 30;
+            const int precioBanano = 80;
+            const int precioPina = 1000;
+
+            Console.WriteLine("Bienvenido a la frutera");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Frutas disponibles:");
+            Console.WriteLine("1. Pera");
+            Console.WriteLine("2. Manzana");
+            Console.WriteLine("3. Ciruela");
+            Console.WriteLine("4. Banano");
+            Console.WriteLine("5. Piña");
+            Console.WriteLine("------------------------");
+
+            Console.Write("Ingrese el número de la fruta que desea comprar: ");
+            int opcion = int.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese la cantidad que desea comprar: ");
+            int cantidad = int.Parse(Console.ReadLine());
+
+            int valorCompra = 0;
+
+            // Calcular el valor de la compra según la fruta seleccionada
+            switch (opcion)
+            {
+                case 1:
+                    valorCompra = cantidad * precioPera;
+                    break;
+                case 2:
+                    valorCompra = cantidad * precioManzana;
+                    break;
+                case 3:
+                    valorCompra = cantidad * precioCiruela;
+                    break;
+                case 4:
+                    valorCompra = cantidad * precioBanano;
+                    break;
+                case 5:
+                    valorCompra = cantidad * precioPina;
+                    break;
+                default:
+                    Console.WriteLine("Opción inválida. Por favor, seleccione una fruta válida.");
+                    return;
+            }
+
+            // Aplicar descuento del 10% si el valor de la compra supera los $20,000
+            if (valorCompra > 20000)
+            {
+                double descuento = valorCompra * 0.1;
+                valorCompra -= (int)descuento;
+            }
+
+            Console.WriteLine("El valor de la compra es: $" + valorCompra);
+        }
+    }
+}
